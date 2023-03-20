@@ -1,0 +1,6 @@
+requests
+django==3.2
+pytest
+pytest-django
+djangorestframework
+djangorestframework-simplejwt
