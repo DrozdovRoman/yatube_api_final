@@ -5,25 +5,27 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView
 )
+from .views import PostViewSet
 
 
 router_v1 = DefaultRouter()
+router_v1.register(r'posts', PostViewSet)
 
 
 urlpatterns = [
     path('v1/', include(router_v1.urls)),
     path(
-        'api/token/',
+        'token/',
         TokenObtainPairView.as_view(),
         name='token_obtain_pair'
     ),
     path(
-        'api/token/refresh/',
+        'token/refresh/',
         TokenRefreshView.as_view(),
         name='token_refresh'
     ),
     path(
-        'api/token/verify/',
+        'token/verify/',
         TokenVerifyView.as_view(),
         name='token_verify'
     ),

@@ -7,21 +7,22 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
-        fields = ('id', 'text', 'author', 'pub_date')
         model = Post
+        fields = ('__all__')
+        read_only_fields = ('pub_date',)
 
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
-        fields = ('id', 'author', 'post', 'text', 'created')
+        fields = ('__all__')
         model = Comment
 
 
 class FollowSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='author.username')
-    
+
     class Meta:
         fields = '__all__'
         model = Follow
