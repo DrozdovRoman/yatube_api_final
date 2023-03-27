@@ -5,11 +5,15 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView
 )
-from .views import PostViewSet
+from .views import PostViewSet, CommentViewSet, FollowViewSet
 
 
 router_v1 = DefaultRouter()
 router_v1.register(r'posts', PostViewSet)
+router_v1.register(
+    r'posts/(?P<post_id>\d+)/comments', CommentViewSet, basename='comment'
+)
+router_v1.register(r'follow', FollowViewSet)
 
 
 urlpatterns = [
